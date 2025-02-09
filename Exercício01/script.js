@@ -22,14 +22,12 @@ function selecionar(numElemento){
     }
 }
 
-function removerSelecionado(numElemento){
-    for(let contador in selecionado){
-        //se for igual
-        if(selecionado[contador] == numElemento){
-            selecionado[contador] = selecionado[contador+1 ]
-        }
-    }
-}
-
 function copiar(){
+    caixa2 = document.getElementById("caixa2")
+    novoElemento = document.createElement("div")
+    novoElemento.setAttribute('class', 'curso c1')
+    novoElemento.innerText = "teste"
+
+
+    caixa2.appendChild(novoElemento)
 }
