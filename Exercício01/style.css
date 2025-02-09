@@ -33,7 +33,7 @@ button{
 
 .destaque{
     background-color: #800 !important;
-    color: #fcc;
+    color: #fcc !important;
     border-color: red;
 }
 
