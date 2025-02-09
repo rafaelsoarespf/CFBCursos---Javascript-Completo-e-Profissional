@@ -23,11 +23,24 @@ function selecionar(numElemento){
 }
 
 function copiar(){
-    caixa2 = document.getElementById("caixa2")
-    novoElemento = document.createElement("div")
-    novoElemento.setAttribute('class', 'curso c1')
-    novoElemento.innerText = "teste"
+    
+    //elementos
+    let caixa2 = document.getElementById("caixa2")
+    let cursos=document.getElementsByClassName("curso c1")
+
+    //limpando
+    caixa2.innerHTML = ''
+
+    //criando elemento
+    for(contador in selecionado){
+        if(selecionado[contador]){
+            novoElemento = document.createElement("div")
+            novoElemento.setAttribute('class', 'curso c1')
+            novoElemento.innerText = cursos[contador].innerText
+            caixa2.appendChild(novoElemento)
+        }
+    }
+    
 
 
-    caixa2.appendChild(novoElemento)
 }
