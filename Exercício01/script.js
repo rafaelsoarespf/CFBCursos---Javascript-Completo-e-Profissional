@@ -1,23 +1,31 @@
 let selecionado = [false,false,false,false,false,false]
 
-function selecionar(numElemento){
+function selecionar(nomeElemento){
     
+    //variaveis
     let cursos=document.getElementsByClassName("curso c1")
+    let posicao = -1;
+
+    for(let contador in cursos){
+        if(cursos[contador].innerText == nomeElemento){
+            posicao = contador
+        }
+    }
 
     //se elemento não estiver selecionado
-    if(!selecionado[numElemento]){
+    if(!selecionado[posicao]){
 
         //alterar o estilo
-        cursos[numElemento].classList.add("destaque")
+        cursos[posicao].classList.add("destaque")
         //adicionar elemento no vetor "selecionado"
-        selecionado[numElemento] = true
+        selecionado[posicao] = true
 
     }else{
 
         //remover estilo
-        cursos[numElemento].classList.remove("destaque")
+        cursos[posicao].classList.remove("destaque")
         //elemento recebe false - não selecionado
-        selecionado[numElemento] = false
+        selecionado[posicao] = false
        
     }
 }
