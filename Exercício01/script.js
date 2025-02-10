@@ -28,16 +28,27 @@ function copiar(){
     let caixa2 = document.getElementById("caixa2")
     let cursos=document.getElementsByClassName("curso c1")
 
-    //limpando
-    caixa2.innerHTML = ''
 
-    //criando elemento
     for(contador in selecionado){
         if(selecionado[contador]){
+
+            //criando elemento   
             novoElemento = document.createElement("div")
             novoElemento.setAttribute('class', 'curso c1')
             novoElemento.innerText = cursos[contador].innerText
             caixa2.appendChild(novoElemento)
+
+            //remover elementos
+            cursos[contador].remove()
+        }
+    }
+
+    //arrumando o array
+    for(contador in selecionado){
+        if(selecionado[contador]){
+            console.log("deletando posição: " + contador + " marcado como " + selecionado[contador] )
+            selecionado.splice(contador,1)
+            console.log(selecionado)
         }
     }
     
