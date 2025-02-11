@@ -1,32 +1,12 @@
-let selecionado = [false,false,false,false,false,false]
-
 function selecionar(nomeElemento){
-    
     //variaveis
     let cursos=document.getElementsByClassName("curso c1")
-    let posicao = -1;
 
     for(let contador in cursos){
         if(cursos[contador].innerText == nomeElemento){
-            posicao = contador
+            //alterar o estilo
+            cursos[contador].classList.toggle("destaque")
         }
-    }
-
-    //se elemento não estiver selecionado
-    if(!selecionado[posicao]){
-
-        //alterar o estilo
-        cursos[posicao].classList.add("destaque")
-        //adicionar elemento no vetor "selecionado"
-        selecionado[posicao] = true
-
-    }else{
-
-        //remover estilo
-        cursos[posicao].classList.remove("destaque")
-        //elemento recebe false - não selecionado
-        selecionado[posicao] = false
-       
     }
 }
 
@@ -36,30 +16,24 @@ function copiar(){
     let caixa2 = document.getElementById("caixa2")
     let cursos=document.getElementsByClassName("curso c1")
 
-
-    for(contador in selecionado){
-        if(selecionado[contador]){
-
+    //adicionar elemento na caixa2
+    for(contador in cursos){
+        if(cursos[contador].classList && cursos[contador].classList.contains('destaque')){
             //criando elemento   
             novoElemento = document.createElement("div")
             novoElemento.setAttribute('class', 'curso c1')
             novoElemento.innerText = cursos[contador].innerText
             caixa2.appendChild(novoElemento)
+        }
+    }
 
-            //remover elementos
+    // remover elemento em caixa1
+    for(let contador=cursos.length-1; contador >= 0; contador-- ){
+        console.log(contador)
+        if(cursos[contador].classList && cursos[contador].classList.contains('destaque')){ 
+
             cursos[contador].remove()
+
         }
     }
-
-    //arrumando o array
-    for(contador in selecionado){
-        if(selecionado[contador]){
-            console.log("deletando posição: " + contador + " marcado como " + selecionado[contador] )
-            selecionado.splice(contador,1)
-            console.log(selecionado)
-        }
-    }
-    
-
-
 }
